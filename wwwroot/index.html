@@ -9,7 +9,7 @@
     <link href="css/app.css" rel="stylesheet" />
     <link href="IntroToBlazor.styles.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <script src="https://kit.fontawesome.com/****.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/********.js" crossorigin="anonymous"></script>
     
 </head>
 
@@ -22,6 +22,19 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
+<script src="text/javascript">
+    window.getDimensions = function () {
+        let galaxyDim = document.getElementById("explore-area").getBoundingClientRect();
+        return {
+            width: galaxyDim.width,
+            height: galaxyDim.height,
+            left: galaxyDim.left,
+            right: galaxyDim.right,
+            top: galaxyDim.top,
+            bottom: galaxyDim.bottom
+        };
+    };
+</script>
 </body>
 
 </html>
