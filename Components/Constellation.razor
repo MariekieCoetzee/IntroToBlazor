@@ -14,10 +14,12 @@
 </div>
 
 @code {
-    private List<Star>? Stars { get; set; } = new();
+    [Parameter]
+    public List<Star>? Stars { get; set; } = new();
+    
     protected override void OnInitialized()
     {
-        Stars = Nebula.StarBirth();
+        Stars = new List<Star>();
         base.OnInitialized();
     }
 

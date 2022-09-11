@@ -13,11 +13,12 @@
 }
 
 @code {
-    private List<BlackHole>? BlackHoles { get; set; } = new();
+    [Parameter]
+    public List<BlackHole>? BlackHoles { get; set; } = new();
 
     protected override void OnInitialized()
     {
-        BlackHoles = Nebula.BlackHoleBirth();
+        BlackHoles = new List<BlackHole>();
         base.OnInitialized();
     }
 }

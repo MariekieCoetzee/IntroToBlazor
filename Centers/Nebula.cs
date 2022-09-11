@@ -4,15 +4,8 @@ namespace IntroToBlazor.Centers;
 
 public class Nebula : INebula
 {
-    public List<Star> StarBirth()
+    public List<Star> StarBirth(Galaxy galaxyScale)
     {
-        Galaxy galaxyScale = new Galaxy
-        {
-            Top = 10,
-            Left = 10,
-            Height = 1300,
-            Width = 800
-        };
         Random rnd = new Random();
         var flexWidth = (int)galaxyScale.Width / 12;
         var flexHeight = (int)galaxyScale.Height / 12;
@@ -130,15 +123,8 @@ public class Nebula : INebula
         };
     }
 
-    public List<BlackHole> BlackHoleBirth()
+    public List<BlackHole> BlackHoleBirth(Galaxy galaxyScale)
     {
-        Galaxy galaxyScale = new Galaxy
-        {
-            Top = 10,
-            Left = 10,
-            Width = 800,
-            Height = 1300,
-        };
         return new List<BlackHole>()
         {
             new BlackHole
