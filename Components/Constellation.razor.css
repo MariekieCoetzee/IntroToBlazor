@@ -1,0 +1,42 @@
+.stars {
+    font-size: xxx-large;
+    position: absolute
+}
+
+.discovered {
+    animation-name: fadeout;
+    animation-duration: 1s;
+    animation-fill-mode: both
+}
+
+@keyframes fadeout {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+}
+
+.star {
+    color: white;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+}
+
+.glow {
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffffff69, 0 0 5px #ffffff63, 0 0 10px #ea197a5e, 0 0 20px #f7c6dc8a, 0 0 30px #cc19735e, 0 0 40px #f47db98f, 0 0 50px #ff4da64d;
+    }
+    to {
+        text-shadow: 0 0 5px #ffffff80, 0 0 10px #ff4da65e, 0 0 20px #ff4da67a, 0 0 30px #ff4da66b, 0 0 50px #ff4da64a, 0 0 50px #ff4da678, 0 0 60px #ff4da66e;
+    }
+}

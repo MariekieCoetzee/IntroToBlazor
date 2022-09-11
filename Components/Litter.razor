@@ -1,0 +1,23 @@
+@inject INebula Nebula;
+
+@if (BlackHoles is not null)
+{
+    foreach (var blackHole in BlackHoles)
+    {
+        var styleTop = $"{blackHole.Top}px ";
+        var styleLeft = $"{blackHole.Left}px";
+        
+        <i id="@blackHole.Name" class="blackhole  @blackHole.IconType"
+           style="@blackHole.Animation; top: @styleTop; left: @styleLeft;"></i>
+    }
+}
+
+@code {
+    private List<BlackHole>? BlackHoles { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        BlackHoles = Nebula.BlackHoleBirth();
+        base.OnInitialized();
+    }
+}

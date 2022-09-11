@@ -1,0 +1,24 @@
+@inject INebula Nebula;
+
+<div>
+    @* https://devicon.dev/ *@
+    @foreach (var star in Stars!)
+    {
+        var position = $"top: {star.Top}px; left:{star.Left}px; bottom:{star.Bottom}px; right:{star.Right}px";
+
+        <i id="@star.Name"
+           class="@star.IconType @star.Animation "
+           attr_img="@star.Image"
+           style="@position;"></i>
+    }
+</div>
+
+@code {
+    private List<Star>? Stars { get; set; } = new();
+    protected override void OnInitialized()
+    {
+        Stars = Nebula.StarBirth();
+        base.OnInitialized();
+    }
+
+}
