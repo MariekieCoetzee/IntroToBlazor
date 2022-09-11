@@ -1,10 +1,16 @@
 <div id="explore-area">
 <div id="rocket">
-    <Constellation></Constellation>
-    <Litter></Litter>
+    <Constellation  Stars="Stars" ></Constellation>
+    <Litter  BlackHoles="BlackHoles"></Litter>
 </div>
 </div>
 
 @code {
-    
+
+    [Parameter]
+    public List<BlackHole> BlackHoles { get; set; } = null!;
+
+    [Parameter]
+    public List<Star> Stars { get; set; } = null!;
+
 }

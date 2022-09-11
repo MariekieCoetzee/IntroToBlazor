@@ -1,10 +1,28 @@
 @page "/"
+
+@inject IObservation Observation;
+@inject INebula Nebula;
+
 <div id="galaxy"
      class="galaxy-container">
-     <Universe></Universe>
+     <Universe BlackHoles="Litter" Stars="Constellation"></Universe>
      <ScoreCard></ScoreCard>
 </div>
 
 @code {
-    
+     private Models.Galaxy GalaxyScale { get; set; } = new();
+     private List<Star>? Constellation { get; set; } = new();
+     private List<BlackHole>? Litter { get; set; } = new();
+     
+     protected override async Task OnAfterRenderAsync(bool firstRender)
+     {
+          GalaxyScale = await Observation.GetUniverseScale();
+          if (firstRender)
+          {
+               Litter = Nebula.BlackHoleBirth(GalaxyScale);
+               Constellation = Nebula.StarBirth(GalaxyScale);
+               StateHasChanged();
+          }
+     }
+
 }

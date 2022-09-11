@@ -4,6 +4,6 @@ namespace IntroToBlazor.Centers;
 
 public interface INebula
 {
-    List<Star> StarBirth();
-    List<BlackHole> BlackHoleBirth();
+    List<Star> StarBirth(Galaxy galaxyScale);
+    List<BlackHole> BlackHoleBirth(Galaxy galaxyScale);
 }
