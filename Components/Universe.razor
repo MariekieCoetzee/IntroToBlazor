@@ -2,9 +2,11 @@
     <div id="rocket"
          style="top: @rocketTop; left: @rocketLeft; "
          tabindex="0"
+         @onkeydown="OnRocketMoving"
          class="@Rocket.RocketDirection rockstar"></div>
+      <Litter  BlackHoles="BlackHoles"></Litter>  
     <Constellation  Stars="Stars" ></Constellation>
-    <Litter  BlackHoles="BlackHoles"></Litter>
+
 
 </div>
 
@@ -18,6 +20,9 @@
 
     [Parameter]
     public Rocket Rocket { get; set; } = null!;
+    
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnRocketMoving { get; set; }
 
     string rocketTop { get; set; } = String.Empty;
     string rocketLeft { get; set; } = String.Empty;

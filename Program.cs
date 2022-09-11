@@ -11,7 +11,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) })
     .AddScoped<INebula, Nebula>()
     .AddScoped<ISatelite,Satelite>()
-    .AddScoped<IObservation, Observation>();
+    .AddScoped<IObservation, Observation>()
+    .AddScoped<IControl,Control>();
 ;
 
 await builder.Build().RunAsync();

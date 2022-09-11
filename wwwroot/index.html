@@ -35,6 +35,64 @@
             bottom: galaxyDim.bottom
         };
     };
+
+    window.getRocketPosition = function () {
+        let rocketElement = document.getElementById("rocket");
+        let elemRect = rocketElement.getBoundingClientRect();
+        return {
+            name: rocketElement.id,
+            icontype: rocketElement.className,
+            top: elemRect.top,
+            bottom: elemRect.bottom,
+            right: elemRect.right,
+            left: elemRect.left,
+            width: elemRect.width,
+        };
+    }
+
+    window.getStarsPositions = function () {
+        let elements = document.getElementsByClassName("stars");
+        let positions = [];
+        for (let i = 0; i < elements.length; i++) {
+            let elemId = document.getElementById(elements[i].id);
+            let elemRect = elemId.getBoundingClientRect();
+            let elem = {
+                name: elemId.id,
+                icontype: elemId.className,
+                top: elemRect.top,
+                bottom: elemRect.bottom,
+                right: elemRect.right,
+                left: elemRect.left,
+                width: elemRect.width,
+                image: elemId.getAttribute("attr_img")
+            }
+            positions.push(elem);
+        }
+        return positions;
+    }
+
+    window.getLitterPositions = function () {
+        let elements = document.getElementsByClassName("blackhole");
+        let positions = [];
+        for (let i = 0; i < elements.length; i++) {
+            let elemId = document.getElementById(elements[i].id);
+            let elemRect = elemId.getBoundingClientRect();
+            let elem = {
+                name: elemId.id,
+                icontype: elemId.className,
+                top: elemRect.top,
+                bottom: elemRect.bottom,
+                right: elemRect.right,
+                left: elemRect.left,
+                width: elemRect.width
+            }
+            positions.push(elem);
+        }
+        return positions;
+    }
+    window.setFocus = function (element) {
+        element.focus();
+    };
 </script>
 </body>
 

@@ -2,10 +2,12 @@
 
 @inject IObservation Observation;
 @inject INebula Nebula;
+@inject IControl Control;
 
 <div id="galaxy"
      class="galaxy-container">
-     <Universe BlackHoles="Litter" 
+     <Universe OnRocketMoving="OnRocketMoving" 
+          BlackHoles="Litter" 
                Stars="Constellation"
                Rocket="_rocket"></Universe>
      <ScoreCard Stars="Constellation"></ScoreCard>
@@ -31,5 +33,12 @@
                StateHasChanged();
           }
      }
-    
+
+     async Task OnRocketMoving(KeyboardEventArgs e)
+     {
+          await Control.MoveRocket(e, _rocket, GalaxyScale);
+
+          Constellation = await Observation.DetectNewDiscovery(Constellation!, _rocket );
+          Control.MoveBlackHoles(Litter!, _rocket);
+     }
 }
