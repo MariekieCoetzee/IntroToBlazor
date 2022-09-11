@@ -1,10 +1,40 @@
 <div id="scorecard-container" class="scorecard-container">
     <div class="scorecard-header">Discoveries</div>
     <div class="scorecard-star-container">
+        @if (Stars is not null)
+        {
+            foreach (var star in Stars)
+            {
+                if (star.Discovered)
+                {
+                    
+                    <img alt="@star.Name"
+                         src="@star.Image"
+                         class="discovered-entrance"
+                         style="width: 48px; height: 48px; padding: 2% " />
+                }
+                else
+                {
+                    <i id="@star.Name"
+                       class="@star.IconType stars"
+                       style=" color:gray; font-size: xxx-large; padding: 2%">
+                    </i>
+                }
+            }
+        }
+
     </div>
 </div>
 
 
 @code {
-    
+
+    [Parameter]
+    public List<Star>? Stars { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Stars = new List<Star>();
+        base.OnInitialized();
+    }
 }

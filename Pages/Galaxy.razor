@@ -5,14 +5,17 @@
 
 <div id="galaxy"
      class="galaxy-container">
-     <Universe BlackHoles="Litter" Stars="Constellation"></Universe>
-     <ScoreCard></ScoreCard>
+     <Universe BlackHoles="Litter" 
+               Stars="Constellation"
+               Rocket="_rocket"></Universe>
+     <ScoreCard Stars="Constellation"></ScoreCard>
 </div>
 
 @code {
      private Models.Galaxy GalaxyScale { get; set; } = new();
      private List<Star>? Constellation { get; set; } = new();
      private List<BlackHole>? Litter { get; set; } = new();
+     private Rocket _rocket { get; set; } = new();
      
      protected override async Task OnAfterRenderAsync(bool firstRender)
      {
@@ -21,6 +24,10 @@
           {
                Litter = Nebula.BlackHoleBirth(GalaxyScale);
                Constellation = Nebula.StarBirth(GalaxyScale);
+
+               _rocket!.Top = GalaxyScale.Height / 2;
+               _rocket.Left = GalaxyScale.Width / 2;
+               
                StateHasChanged();
           }
      }

@@ -1,8 +1,11 @@
 <div id="explore-area">
-<div id="rocket">
+    <div id="rocket"
+         style="top: @rocketTop; left: @rocketLeft; "
+         tabindex="0"
+         class="@Rocket.RocketDirection rockstar"></div>
     <Constellation  Stars="Stars" ></Constellation>
     <Litter  BlackHoles="BlackHoles"></Litter>
-</div>
+
 </div>
 
 @code {
@@ -13,4 +16,16 @@
     [Parameter]
     public List<Star> Stars { get; set; } = null!;
 
+    [Parameter]
+    public Rocket Rocket { get; set; } = null!;
+
+    string rocketTop { get; set; } = String.Empty;
+    string rocketLeft { get; set; } = String.Empty;
+
+    protected override void OnParametersSet()
+    {
+        rocketTop = $"{Rocket.Top}px";
+        rocketLeft = $"{Rocket.Left}px";
+        base.OnParametersSet();
+    }
 }
