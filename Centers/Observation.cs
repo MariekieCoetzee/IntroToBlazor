@@ -55,8 +55,26 @@ public class Observation : IObservation
     {
         return await Service.GetRocketPosition();
     }
-    public Task DetectBlackHoleCollision(List<BlackHole> blackHoles, Rocket? rocket)
+    public async Task DetectBlackHoleCollision(List<BlackHole> blackHoles, Rocket? rocket)
     {
-        throw new NotImplementedException();
+        var blackholePosition = await GetBlackHolePositions();
+        var rocketPosition = await GetRocketPosition();
+        var collision = blackholePosition!.FirstOrDefault(
+            elem => (elem.Top <= rocketPosition!.Bottom && elem.Bottom >= rocketPosition.Top) &&
+                    (elem.Left <= rocketPosition.Right && elem.Right >= (rocketPosition.Right - elem.Width))
+        );
+
+        if (collision is not null)
+        {
+            rocket!.RocketStatus = Rocket.Status.Lost;
+            Console.WriteLine(" You Died!");
+        }
+    }
+
+    private async Task<List<BlackHole>?> GetBlackHolePositions()
+    {
+        var blackHolePositions = await Service.GetLitterPositions();
+
+        return blackHolePositions;
     }
 }

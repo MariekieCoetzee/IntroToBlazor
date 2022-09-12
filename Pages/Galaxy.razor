@@ -40,5 +40,6 @@
 
           Constellation = await Observation.DetectNewDiscovery(Constellation!, _rocket );
           Control.MoveBlackHoles(Litter!, _rocket);
+          await Observation.DetectBlackHoleCollision(Litter!, _rocket);
      }
 }
