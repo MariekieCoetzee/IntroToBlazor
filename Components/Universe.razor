@@ -1,9 +1,11 @@
+@inject IControl Control
+
 <div id="explore-area">
     <div id="rocket"
          style="top: @rocketTop; left: @rocketLeft; "
          tabindex="0"
          @onkeydown="OnRocketMoving"
-         class="@Rocket.RocketDirection rockstar"></div>
+         class="@Rocket.RocketDirection rockstar" @ref=_referenceToRocket></div>
       <Litter  BlackHoles="BlackHoles"></Litter>  
     <Constellation  Stars="Stars" ></Constellation>
 
@@ -24,6 +26,8 @@
     [Parameter]
     public EventCallback<KeyboardEventArgs> OnRocketMoving { get; set; }
 
+    ElementReference _referenceToRocket;
+
     string rocketTop { get; set; } = String.Empty;
     string rocketLeft { get; set; } = String.Empty;
 
@@ -32,5 +36,10 @@
         rocketTop = $"{Rocket.Top}px";
         rocketLeft = $"{Rocket.Left}px";
         base.OnParametersSet();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Control.SetFocus(_referenceToRocket);
     }
 }
