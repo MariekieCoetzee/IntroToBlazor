@@ -1,0 +1,22 @@
+@if (BlackHoles is not null)
+{
+    foreach (var blackHole in BlackHoles)
+    {
+        var styleTop = $"{blackHole.Top}px ";
+        var styleLeft = $"{blackHole.Left}px";
+        
+        <i id="@blackHole.Name" class="blackhole  @blackHole.IconType"
+           style="@blackHole.Animation; top: @styleTop; left: @styleLeft;"></i>
+    }
+}
+
+@code {
+    [Parameter]
+    public List<BlackHole>? BlackHoles { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        BlackHoles = new List<BlackHole>();
+        base.OnInitialized();
+    }
+}

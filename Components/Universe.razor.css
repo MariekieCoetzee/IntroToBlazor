@@ -1,0 +1,28 @@
+#explore-area {
+    width: 98%;
+    height: 100%;
+    background-color: #ffffff4a;
+    box-shadow: 5px 6px 6px #eeeeee57;
+    border: 1px solid #ffffff5a;
+    border-radius: 40rem;
+}
+
+#rocket:focus-visible {
+    outline: none;
+}
+
+.Up {
+    transform: rotate(0);
+}
+
+.Down {
+    transform: rotate(3.142rad);
+}
+
+.Left {
+    transform: rotate(-0.25turn);
+}
+
+.Right {
+    transform: rotate(90deg);
+}

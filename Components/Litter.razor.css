@@ -1,0 +1,13 @@
+.blackhole {
+    color: black;
+    font-size: smaller;
+    position: absolute;
+    z-index: 9;
+    box-shadow: 0.5vh 0 1vh 0.5vh #f50,
+    inset -3vh 0 0.5vh 0.5vh #f4eb42, -0.5vh -0.5vh 1vh 0 #f80
+}
+
+.blackhole:before {
+    box-shadow: #f4eb42 0 0 0.5vh 0.5vh,
+    #f4eb42 0.5vh 1vh 0.5vh 0.3vh;
+}

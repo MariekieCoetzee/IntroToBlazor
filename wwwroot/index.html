@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>IntroToBlazor</title>
+    <base href="/" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="IntroToBlazor.styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <script src="https://kit.fontawesome.com/*****.js" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+<script type="text/javascript">
+    
+    window.getDimensions = function () {
+        let galaxyDim = document.getElementById("explore-area").getBoundingClientRect();
+        return {
+            width: galaxyDim.width,
+            height: galaxyDim.height,
+            left: galaxyDim.left,
+            right: galaxyDim.right,
+            top: galaxyDim.top,
+            bottom: galaxyDim.bottom
+        };
+    };
+
+    window.getRocketPosition = function () {
+        let rocketElement = document.getElementById("rocket");
+        let elemRect = rocketElement.getBoundingClientRect();
+        return {
+            name: rocketElement.id,
+            icontype: rocketElement.className,
+            top: elemRect.top,
+            bottom: elemRect.bottom,
+            right: elemRect.right,
+            left: elemRect.left,
+            width: elemRect.width,
+        };
+    }
+
+    window.getStarsPositions = function () {
+        let elements = document.getElementsByClassName("stars");
+        let positions = [];
+        for (let i = 0; i < elements.length; i++) {
+            let elemId = document.getElementById(elements[i].id);
+            let elemRect = elemId.getBoundingClientRect();
+            let elem = {
+                name: elemId.id,
+                icontype: elemId.className,
+                top: elemRect.top,
+                bottom: elemRect.bottom,
+                right: elemRect.right,
+                left: elemRect.left,
+                width: elemRect.width,
+                image: elemId.getAttribute("attr_img")
+            }
+            positions.push(elem);
+        }
+        return positions;
+    }
+
+    window.getLitterPositions = function () {
+        let elements = document.getElementsByClassName("blackhole");
+        let positions = [];
+        for (let i = 0; i < elements.length; i++) {
+            let elemId = document.getElementById(elements[i].id);
+            let elemRect = elemId.getBoundingClientRect();
+            let elem = {
+                name: elemId.id,
+                icontype: elemId.className,
+                top: elemRect.top,
+                bottom: elemRect.bottom,
+                right: elemRect.right,
+                left: elemRect.left,
+                width: elemRect.width
+            }
+            positions.push(elem);
+        }
+        return positions;
+    }
+    window.setFocus = function (element) {
+        element.focus();
+    };
+</script>
+</body>
+
+</html>

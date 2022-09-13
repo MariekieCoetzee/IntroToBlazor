@@ -1,0 +1,51 @@
+﻿body {
+    overflow: hidden;
+    background-color: #000
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+
+#rocket {
+    background: center/cover url(../images/rocket.png) no-repeat;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    border: none;
+    z-index: 999;
+
+}
+
+.rocket-launch {
+    position: absolute;
+    bottom: -600px;
+    left: 35%;
+    animation: fly 10s .5s ease-in;
+}
+
+@keyframes fly {
+    0% {
+        bottom: -600px;
+    }
+
+    100% {
+        bottom: 100%;
+    }
+}
