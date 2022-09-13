@@ -9,4 +9,5 @@ public interface IObservation
 
     Task DetectBlackHoleCollision(List<BlackHole> blackHoles, Rocket? rocket);
 
+    void DiscoveryStatus(Rocket rocket, List<Star> stars);
 }

@@ -4,15 +4,25 @@
 @inject INebula Nebula;
 @inject IControl Control;
 
-<div id="galaxy"
-     class="galaxy-container">
-     <Universe OnRocketMoving="OnRocketMoving" 
-          BlackHoles="Litter" 
-               Stars="Constellation"
-               Rocket="_rocket"></Universe>
-     <ScoreCard Stars="Constellation"></ScoreCard>
-</div>
-
+@if (_rocket!.RocketStatus is Rocket.Status.Lost)
+{
+   <StatusLost />
+}
+else if (_rocket!.RocketStatus is Rocket.Status.Win)
+{
+   <StatusWin />
+}
+else
+{
+     <div id="galaxy"
+          class="galaxy-container">
+          <Universe OnRocketMoving="OnRocketMoving"
+                    BlackHoles="Litter"
+                    Stars="Constellation"
+                    Rocket="_rocket"></Universe>
+          <ScoreCard Stars="Constellation"></ScoreCard>
+     </div>
+}
 @code {
      private Models.Galaxy GalaxyScale { get; set; } = new();
      private List<Star>? Constellation { get; set; } = new();
@@ -21,6 +31,9 @@
      
      protected override async Task OnAfterRenderAsync(bool firstRender)
      {
+          if (_rocket.RocketStatus is not Rocket.Status.Discovering)
+               return;
+          
           GalaxyScale = await Observation.GetUniverseScale();
           if (firstRender)
           {
@@ -39,6 +52,7 @@
           await Control.MoveRocket(e, _rocket, GalaxyScale);
 
           Constellation = await Observation.DetectNewDiscovery(Constellation!, _rocket );
+          Observation.DiscoveryStatus(_rocket!, Constellation);
           Control.MoveBlackHoles(Litter!, _rocket);
           await Observation.DetectBlackHoleCollision(Litter!, _rocket);
      }

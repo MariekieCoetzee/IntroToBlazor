@@ -77,4 +77,13 @@ public class Observation : IObservation
 
         return blackHolePositions;
     }
+
+    public void DiscoveryStatus(Rocket rocket, List<Star> stars)
+    {
+        var discovery = stars.Where(x => !x.Discovered);
+        if (discovery.Any())
+            return;
+
+        rocket.RocketStatus = Rocket.Status.Win;
+    }
 }
