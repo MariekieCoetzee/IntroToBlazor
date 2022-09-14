@@ -1,13 +1,18 @@
 .blackhole {
-    color: black;
+    color: #fff;
     font-size: smaller;
     position: absolute;
     z-index: 9;
-    box-shadow: 0.5vh 0 1vh 0.5vh #f50,
-    inset -3vh 0 0.5vh 0.5vh #f4eb42, -0.5vh -0.5vh 1vh 0 #f80
+    text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
+    0 0 200px #0072ff;
+    animation: animate 3s linear infinite;
 }
 
-.blackhole:before {
-    box-shadow: #f4eb42 0 0 0.5vh 0.5vh,
-    #f4eb42 0.5vh 1vh 0.5vh 0.3vh;
+@keyframes animate {
+    from {
+        filter: hue-rotate(0deg);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
 }
