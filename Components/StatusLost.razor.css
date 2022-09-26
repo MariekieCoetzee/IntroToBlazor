@@ -8,7 +8,7 @@
     height: 100vh;
     align-items: center;
     justify-content: center;
-    filter: blur(1px);
+    
 }
 
 .mission_failed, .mission_failed:before, .mission_failed:after {
@@ -32,6 +32,7 @@
     box-shadow: 1vh 0 3vh 2vh #f50,
     inset -2vh 0 3vh 4vh #f80,
     -1vh -1vh 35vh 0 #f60;
+    filter: blur(1px);
 }
 
 .mission_failed:before, .mission_failed:after {
